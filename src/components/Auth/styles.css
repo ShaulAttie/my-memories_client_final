@@ -1,0 +1,47 @@
+.sign__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    min-height: 400px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    position: relative;
+    top: 150px;
+}
+
+.sign__subcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+}
+
+.icon__person {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.first__last {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.already{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
