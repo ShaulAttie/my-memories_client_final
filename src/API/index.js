@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // const API = axios.create({ baseURL: `http://localhost:5000` })
-const API = axios.create({ baseURL: `https://curious-torrone-5206bd.netlify.app/` })
+const API = axios.create({ baseURL: `https://my-memories13.netlify.app` })
 // https://mymemoriesclientfinal.herokuapp.com/
 API.interceptors.request.use((req) => {
     if (localStorage.getItem("profile"))
