@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 // import Chip from "@material-ui/core/Chip";
 import Chip from "@mui/material/Chip";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+// import { makeStyles } from "@mui/styles";
+import {TextField} from "@mui/material";
 import Downshift from "downshift";
 
 
-const useStyles = makeStyles(theme => ({
-    chip: {
-        margin: theme.spacing(0.5, 0.25)
-    }
-}));
+// const useStyles = makeStyles(theme => ({
+//     chip: {
+//         margin: theme.spacing(0.5, 0.25)
+//     }
+// }));
 
 export default function TagsInput({ ...props }) {
-    const classes = useStyles();
+    // const classes = useStyles();
     const { selectedTags, placeholder, tags, ...other } = props;
     const [inputValue, setInputValue] = useState("");
     const [selectedItem, setSelectedItem] = useState([]);
@@ -85,13 +85,14 @@ export default function TagsInput({ ...props }) {
                     return (
                         <div>
                             <TextField
+                        
                                 InputProps={{
                                     startAdornment: selectedItem.map(item => (
                                         <Chip
                                             key={item}
                                             tabIndex={-1}
                                             label={item}
-                                            className={classes.chip}
+                                            // className={classes.chip}
                                             onDelete={handleDelete(item)}
                                         />
                                     )),

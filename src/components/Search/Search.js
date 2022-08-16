@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom"
 
 import { TextField, Button } from "@mui/material"
 // import TagsInput from "../TagsInput/TagsInput"
-// import ChipInput from '@mui/material/Chip'
 // import ChipInput from 'material-ui-chip-input'
 
-import { getPostsBySearch } from "../../actions/posts"
 import { useDispatch } from 'react-redux'
+import { getPosts, getPostsBySearch } from "../../actions/posts"
+
 
 const Search = () => {
     const [search, setSearch] = useState("")
@@ -16,9 +16,9 @@ const Search = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    function handleSelecetedTags(items) {
-        setTags(items);
-    }
+    // function handleSelecetedTags(items) {
+    //     setTags(items);
+    // }
 
     const handleKeyDown = (e) => {
         if (e.keyCode === 13) {
@@ -26,14 +26,14 @@ const Search = () => {
         }
     }
 
-    const handleAdd = (tag) => {
-        setTags([...tags, tag])
-    }
+    // const handleAdd = (tag) => {
+    //     setTags([...tags, tag])
+    // }
 
-    const handleDelete = (tagToDelete) => {
-        setTags(tags.filter((tag) => tag !== tagToDelete))
+    // const handleDelete = (tagToDelete) => {
+    //     setTags(tags.filter((tag) => tag !== tagToDelete))
 
-    }
+    // }
 
     const searchPost = () => {
         if (search.trim() || tags) {
@@ -47,11 +47,14 @@ const Search = () => {
     const searchClear = () => {
         setSearch('')
         setTags([])
-        navigate("/posts")
+        dispatch(getPosts({ limit: 8, skip: 1 }))
+        // navigate("/")
     }
 
 
     var flag = true
+
+    if (tags.length === 1 && tags[0] === "") tags.pop()
 
     if (search || tags.length) {
         flag = false;
@@ -68,11 +71,23 @@ const Search = () => {
                     name="search"
                     variant="outlined"
                     label="Search Memories"
-                    onKeyDown={handleKeyDown}
+                    size="small" margin="dense"
                     fullWidth
+                    onKeyDown={handleKeyDown}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                />
+                <TextField
+                    className="textField"
+                    name="tags"
+                    variant="outlined"
+                    label="Search Tags"
                     size="small" margin="dense"
+                    style={{ margin: '10px 0' }}
+                    fullWidth
+                    onKeyDown={handleKeyDown}
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value.toLowerCase().trim().split(','))}
                 />
                 {/* NEW */}
                 {/* <ChipInput
@@ -86,17 +101,19 @@ const Search = () => {
                     fullWidth
                     size="small" margin="dense"
                 /> */}
-                {/* <TagsInput
-                    selectedTags={handleSelecetedTags}
-                    fullWidth
-                    variant="outlined"
-                    id="tags"
-                    name="tags"
-                    placeholder="add Tags"
-                    label="tags"
-                    tags00={tags}
-                /> */}
-            
+                {/* <TagsInput */}
+
+                {/* // selectedTags={handleSelecetedTags}
+                    // fullWidth
+                    // variant="outlined"
+                    //// id="tags"
+                    // name="tags"
+                    // placeholder="add Tags"
+                    // label="add Tags"
+                    // tags00={tags}
+                    // size="small" margin="dense" */}
+                {/* /> */}
+
                 {/* OLD */}
                 {/* <ChipInput
                     className="textField"

@@ -33,8 +33,46 @@ const Form = ({ currentId, setCurrentId }) => {
     if (post) setPostData(post)
   }, [post])
 
+  function handleKeyDown(event) {
+
+    if (event.key === ",") {
+      var newPostData = [...postData.tags]
+
+      const lastIndex = event.target.value.split(",")[newPostData.length - 1]
+
+      const duplicatedTags = newPostData.indexOf(lastIndex)
+
+      if (duplicatedTags !== -1 && duplicatedTags !== newPostData.length - 1) {
+        newPostData.pop()
+        setPostData({ ...postData, tags: newPostData })
+
+      }
+    }
+
+    // if (event.key === "Enter") {
+    //   const newSelectedItem = [...selectedItem];
+    //   const duplicatedValues = newSelectedItem.indexOf(
+    //     event.target.value.trim()
+    //   );
+
+    //   if (duplicatedValues !== -1) {
+    //     setInputValue("");
+    //     return;
+    //   }
+    //   if (!event.target.value.replace(/\s/g, "").length) return;
+
+    //   newSelectedItem.push(event.target.value.trim());
+
+    //   setSelectedItem(newSelectedItem);
+    //   setInputValue("");
+    // }
+  }
+
+
   const handleOnSubmit = async (e) => {
     e.preventDefault()
+
+    postData.tags = postData.tags.filter((tag) => tag !== "")
 
     if (currentId === 0) {
       dispatch(createPost({ ...postData, name: user?.result?.name }, navigate))
@@ -55,13 +93,13 @@ const Form = ({ currentId, setCurrentId }) => {
     })
   }
 
-  const handleAddChip = (tag) => {
-    setPostData({ ...postData, tags: [...postData.tags, tag.toLowerCase()] });
-  };
+  // const handleAddChip = (tag) => {
+  //   setPostData({ ...postData, tags: [...postData.tags, tag.toLowerCase()] });
+  // };
 
-  const handleDeleteChip = (chipToDelete) => {
-    setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
-  };
+  // const handleDeleteChip = (chipToDelete) => {
+  //   setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
+  // };
 
   if (!user?.result?.name) {
     return (
@@ -83,7 +121,7 @@ const Form = ({ currentId, setCurrentId }) => {
         {/* <TextField className="textField" name="creator" variant="outlined" label="Creator" size="small" margin="dense" value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} fullWidth /> */}
         <TextField className="textField" name="title" variant="outlined" label="Title" size="small" margin="dense" value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} fullWidth />
         <TextField className="textField" name="message" multiline rows={4} variant="outlined" label="Message" size="small" margin="dense" value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} fullWidth />
-        {/* <TextField className="textField" name="tags" variant="outlined" label="Tags" size="small" margin="dense" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} fullWidth /> */}
+        <TextField className="textField" name="tags" variant="outlined" label="Tags" size="small" margin="dense" value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.toLowerCase().trim().split(',') })} onKeyDown={(e) => handleKeyDown(e)} fullWidth />
         {/* NEW */}
         {/* <ChipInput
           className="textField"

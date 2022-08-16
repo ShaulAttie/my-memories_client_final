@@ -76,3 +76,27 @@
     width: 5%;
     height: 100%;
 }
+
+.log_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 2px solid aqua;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.log_button:hover{
+    /* color: rgb(0, 0, 0); */
+    background-color: aqua;
+    /* height: 2rem; */
+    /* border: 2px solid aqua; */
+    /* border-radius: 20px; */
+}
+.log_button svg{
+    height: 1.5rem;
+    width: 1.5rem;
+}

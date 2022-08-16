@@ -8,6 +8,9 @@ import { LOGOUT } from "../../constanst/constantsType"
 
 import decode from "jwt-decode"
 
+import {IoMdLogIn} from "react-icons/io"
+import {IoMdLogOut} from "react-icons/io"
+
 const Header = () => {
   const dispatch = useDispatch()
   const location = useLocation()
@@ -49,11 +52,11 @@ const Header = () => {
           user ? (
             <div className="header__logOut">
               <span>Wellcome, {user.result.name}</span>
-              <button onClick={logout}>LogOut</button>
+              <button onClick={logout} className="log_button"><IoMdLogOut /></button>
             </div>
           ) : (
             <div className="header__logIn">
-              <Link to="/auth"><button>LogIn</button></Link>
+              <Link to="/auth"><button className="log_button"><IoMdLogIn /></button></Link>
             </div>
           )
         }
