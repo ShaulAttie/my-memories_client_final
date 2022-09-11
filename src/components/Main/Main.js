@@ -47,7 +47,8 @@ const Main = () => {
                                 <FcPrevious />Previous</div>}
                     </div>
                     <div className="next" onClick={next}>
-                        Next<FcNext /></div>
+                        Next<FcNext />
+                    </div>
                 </div>
             </div>
             <div className="right__container">

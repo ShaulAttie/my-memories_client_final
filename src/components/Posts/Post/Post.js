@@ -56,17 +56,27 @@ const Post = ({ post, setCurrentId }) => {
 
 
   // console.log(formatDistance(parseISO(post.createAt), new Date()))
-
+  // console.log(post.createAt);
   return (
     <div className="post__container">
       <div className="post__subcontainer" onClick={openPost}>
         <div className="post__img">
           <img src={post.selectedFile} alt="memories" />
           <div className="post__img__info">
-            <div className="post__creator">by_{post.name}</div>
+            <div className="post__creator">by_{post.name}
+              {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&
+                (window.location.pathname.split("/")[2] === undefined) &&
+                <GiPencil
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentId(post._id)
+                  }}
+                />
+              }
+            </div>
 
-            <div className="post__time">{formatDistance(parseISO(post.createAt), new Date())}</div>
- 
+            {/* <div className="post__time">{formatDistance(parseISO(post.createAt), new Date())}</div> */}
+
           </div>
         </div>
         <div className="post__tags">{post.tags.map(tag => `#${tag} `)}</div>
@@ -77,18 +87,17 @@ const Post = ({ post, setCurrentId }) => {
         <div className="post__like" disabled={!user?.result} onClick={handleLike}>
           <Likes />
         </div>
-        <div className="post__edit">
+        {/* <div className="post__edit">
           {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&
             (window.location.pathname.split("/")[2] === undefined) &&
             <GiPencil
               onClick={(e) => {
                 // e.stopPropagation();
                 setCurrentId(post._id)
-              }
-              }
+              }}
             />
           }
-        </div>
+        </div> */}
         <div className="post__delete">
           {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&
             <IoTrashOutline onClick={() => dispatch(deletePost(post._id))} disabled={!user?.result} />}

@@ -94,7 +94,7 @@ const PostDetail = () => {
 
           <div className="postdetail__creator">by_{post?.name}</div>
 
-           <div className="postdetail__time">{formatDistance(parseISO(post.createAt), new Date())}</div> 
+           {/* <div className="postdetail__time">{formatDistance(parseISO(post.createAt), new Date())}</div>  */}
 
           <div className="postdetail__title"><b>{post?.title}</b></div>
 

@@ -49,8 +49,8 @@
 
 .postdetail__img img {
     width: 95%;
-    height: 300px;
-    border-radius: 18px 18px 18px 18px;
+    max-height: 95%;
+    border-radius: 18px;
     object-fit: cover;
     display: flex;
     flex-wrap: nowrap;
@@ -186,6 +186,9 @@
     border: 1px solid black;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+.comments div:nth-child(1){
+    margin-left: 10px;
 }
 
 .comments__field {
