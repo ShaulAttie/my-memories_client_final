@@ -28,7 +28,7 @@ const CommentSection = ({ post }) => {
 
   return (
     <div>
-      <div >
+      <div className='comments_father'>
         <div className='comments'>
           <div >Comments</div>
           {comments?.map((c, i) => (

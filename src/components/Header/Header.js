@@ -44,6 +44,7 @@ const Header = () => {
       <div className="margin__left"></div>
       <div className="header__subcontainer">
         <div className="header__title" >
+          <img src="\images\logo brain.png" alt="logo" style={{height: "80%", marginRight: "0.5rem"}}/>
           <Link to="/posts">
             <h1 >Memories</h1>
           </Link>

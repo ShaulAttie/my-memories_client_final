@@ -176,7 +176,13 @@
     justify-content: center;
 
 }
+.comments_father{
+display: flex;
+flex-direction: column;
+width: 100%;
+align-items: center;
 
+}
 .comments {
     display: flex;
     flex-direction: column;
