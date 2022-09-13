@@ -202,3 +202,20 @@
 .ref{
     height: 5px;
 }
+
+@media (max-width: 414px){
+    .postdetail__container{
+        flex-direction: column;
+    }
+    .postdetail__img{
+        width: 98%;
+        height: auto;
+        margin-top: 10px;
+    }
+    .postdetail__info{
+        width: 98%;
+    }
+    .postdetail__creator{
+        margin-top: 0;
+    }
+}
